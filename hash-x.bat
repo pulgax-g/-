@@ -1,4 +1,5 @@
 ÿþ&cls
+ÿþ&cls
 @echo off
 setlocal EnableDelayedExpansion
 chcp 65001>nul
